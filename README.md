@@ -1,0 +1,2 @@
+# GSCourse
+GS코스
