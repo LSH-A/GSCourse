@@ -127,3 +127,15 @@ const 쇼핑목록 = ["사과", "라면", "키친타올", "물티슈", "콜라"]
 쇼핑목록.pop();
 
 console.log(쇼핑목록); // ['사과', '라면', '키친타올', '물티슈']
+
+
+
+
+// 1부터 100 까지 빠진 숫자 찾기
+const nums = [1,2,3,4,5,6,7,8,10]
+let sum = 0;
+let empty;
+for(let i = 0; i < nums.length; i++){
+    sum += nums[i];
+}
+empty = 55 - sum
