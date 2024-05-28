@@ -1,0 +1,127 @@
+import Header from "@/components/header";
+import Image from "next/image";
+
+interface Profile {
+  imageSrc: string;
+  name: string;
+  age: number;
+  nationality: string;
+  height: number;
+  weight: number;
+  job: string;
+  famousLines: string[];
+}
+
+export default function Assignment2() {
+  const profiles = [
+    {
+      imageSrc: "/마석도.png",
+      name: "마석도",
+      age: 47,
+      nationality: "한국",
+      height: 178,
+      weight: 120,
+      job: "형사",
+      famousLines: ["형은 다 알 수가 있어.", "어, 내려갈래?"],
+    },
+    {
+      imageSrc: "/장이수.png",
+      name: "장이수 ",
+      age: 47,
+      nationality: "한국",
+      height: 175,
+      weight: 80,
+      job: "범죄자",
+      famousLines: ["내 아임다", "또 못살게 구네?"],
+    },
+    {
+      imageSrc:
+        "/장이수.png",
+      name: "장첸 ",
+      age: 36,
+      nationality: "중국",
+      height: 182,
+      weight: 70,
+      job: "사채업",
+      famousLines: ["니 내 누군지 아니?", "하지 마, 이 개새끼야!"],
+    },
+  ];
+  return (
+    <>
+      <Header title={"프로필 카드 만들기"} hasBack={true} />
+      <div className="w-full h-full flex flex-col overflow-y-auto py-5 px-5 gap-5">
+        {/* 이 아래에 코드를 작성해 주세요. */}
+        {/* {profiles.map(ProfileCard)} */}
+        {profiles.map((profile) => {
+          return (
+            <ProfileCard
+              imageSrc={profile.imageSrc}
+              name={profile.name}
+              age={profile.age}
+              nationality={profile.nationality}
+              height={profile.height}
+              weight={profile.weight}
+              job={profile.job}
+              famousLines={profile.famousLines}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+function ProfileCard({
+  imageSrc,
+  name,
+  age,
+  nationality,
+  height,
+  weight,
+  job,
+  famousLines,
+}: Profile) {
+  return (
+    <div className="p-5 bg-white border rounded-md mx-16">
+      <div className="w-full flex justify-center pb-5">
+        <Image
+          className="rounded-full size-40"
+          src={imageSrc}
+          width={500}
+          height={500}
+          alt="profile"
+        />
+      </div>
+      <div className="w-full h-full flex flex-col gap-2">
+        <div>
+          <p className="text-xs text-stone-400">이름</p>
+          <div>{name}</div>
+        </div>
+        <div>
+          <p className="text-xs text-stone-400">나이</p>
+          <div>{age}세</div>
+        </div>
+        <div>
+          <p className="text-xs text-stone-400">국적</p>
+          <div>{nationality}</div>
+        </div>
+        <div>
+          <p className="text-xs text-stone-400">키/몸무게</p>
+          <div>
+            {height}cm / {weight}kg
+          </div>
+        </div>
+        <div>
+          <p className="text-xs text-stone-400">직업</p>
+          <div>{job}</div>
+        </div>
+        <div>
+          <p className="text-xs text-stone-400">명대사</p>
+          {famousLines.map((line, index) => (
+            <div key={`${name}FamouseLine${index}`}>&quot;{line}&quot;</div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
